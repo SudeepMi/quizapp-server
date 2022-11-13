@@ -18,9 +18,9 @@ app.use(cors())
 
 //app route
 
-app.get('/',(req,res)=> {
+app.post('/',(req,res)=> {
     pusher.trigger('main','current',{
-        questionId:2
+        questionId:req.body.n
     });
     res.status(200).send("Hello from backend")
 });
