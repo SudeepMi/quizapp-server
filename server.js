@@ -25,6 +25,13 @@ app.post('/',(req,res)=> {
     res.status(200).send("Hello from backend")
 });
 
+app.post('/reveal',(req,res)=> {
+    pusher.trigger('main','reveal',{
+        questionId:req.body.n
+    });
+    res.status(200).send("revealed")
+});
+
 const pusher = new Pusher({
   appId: "1202226",
   key: "2142cda6d39765cba2a9",
