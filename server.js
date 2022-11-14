@@ -16,6 +16,8 @@ app.use((req,res,next)=>{
 })
 app.use(cors())
 
+var teams = {};
+
 //app route
 
 app.post('/',(req,res)=> {
@@ -30,6 +32,21 @@ app.post('/reveal',(req,res)=> {
         questionId:req.body.n
     });
     res.status(200).send("revealed")
+});
+
+app.post('/addTeam',(req,res)=> {
+    const _id = Math.random()*10000;
+    const newTeam = {
+        team:req.name,
+        points:0,
+        rank:0,
+        id:_id
+    };
+    teams[_id] = newTeam;
+    pusher.trigger('main','team_added',{
+        team:newTeam
+    });
+    res.status(200).send(teams)
 });
 
 const pusher = new Pusher({
