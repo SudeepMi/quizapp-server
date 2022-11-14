@@ -43,7 +43,7 @@ app.post('/addTeam',(req,res)=> {
         attempted:0,
         id:_id
     };
-    teams.push(newTeam);
+    teams = teams.push(newTeam);
     pusher.trigger('main','team_added',{
         team:teams
     });
