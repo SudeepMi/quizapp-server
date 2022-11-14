@@ -40,6 +40,7 @@ app.post('/addTeam',(req,res)=> {
         team:req.body.name,
         points:0,
         rank:0,
+        attempted:0,
         id:_id
     };
     teams.push(newTeam);
@@ -50,6 +51,12 @@ app.post('/addTeam',(req,res)=> {
 });
 
 app.get('/getTeam',(req,res)=> {
+    res.status(200).send(teams)
+});
+
+app.post('/removeTeam',(req,res)=> {
+    const id = req.body.id;
+    teams = teams.filter(team=>team.id!=id)
     res.status(200).send(teams)
 });
 
