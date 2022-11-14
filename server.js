@@ -16,7 +16,7 @@ app.use((req,res,next)=>{
 })
 app.use(cors())
 
-var teams = {};
+var teams = [];
 
 //app route
 
