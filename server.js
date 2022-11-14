@@ -43,7 +43,7 @@ app.post('/addTeam',(req,res)=> {
         attempted:0,
         id:_id
     };
-    
+
     teams.push(newTeam);
     pusher.trigger('main','team_added',{
         team:teams
@@ -58,6 +58,9 @@ app.get('/getTeam',(req,res)=> {
 app.post('/removeTeam',(req,res)=> {
     const id = req.body.id;
     teams = teams.filter(team=>team.id!=id)
+    pusher.trigger('main','team_added',{
+        team:teams
+    });
     res.status(200).send(teams)
 });
 
