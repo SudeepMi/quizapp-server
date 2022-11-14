@@ -49,6 +49,10 @@ app.post('/addTeam',(req,res)=> {
     res.status(200).send(teams)
 });
 
+app.get('/getTeam',(req,res)=> {
+    res.status(200).send(teams)
+});
+
 const pusher = new Pusher({
   appId: "1202226",
   key: "2142cda6d39765cba2a9",
