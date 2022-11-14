@@ -45,7 +45,7 @@ app.post('/addTeam',(req,res)=> {
     };
     teams.push(newTeam);
     pusher.trigger('main','team_added',{
-        team:newTeam
+        team:teams
     });
     res.status(200).send(teams)
 });
