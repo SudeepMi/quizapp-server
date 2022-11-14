@@ -35,9 +35,9 @@ app.post('/reveal',(req,res)=> {
 });
 
 app.post('/addTeam',(req,res)=> {
-    const _id = Math.random()*10000;
+    const _id = parseInt(Math.random()*10000);
     const newTeam = {
-        team:req.name,
+        team:req.body.name,
         points:0,
         rank:0,
         id:_id
