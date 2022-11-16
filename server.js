@@ -64,6 +64,15 @@ app.post('/removeTeam',(req,res)=> {
     res.status(200).send(teams)
 });
 
+app.post('/updateTeams',(req,res)=> {
+    const _new_team = JSON.parse(req.body.team);
+    teams = _new_team;
+    pusher.trigger('main','team_added',{
+        team:teams
+    });
+    res.status(200).send(teams)
+});
+
 const pusher = new Pusher({
   appId: "1202226",
   key: "2142cda6d39765cba2a9",
