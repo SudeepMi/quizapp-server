@@ -74,11 +74,11 @@ app.post('/updateTeams',(req,res)=> {
 });
 
 const pusher = new Pusher({
-  appId: "1202226",
-  key: "2142cda6d39765cba2a9",
-  secret: "93c2b88777c4c5d29975",
-  cluster: "ap2",
-  useTLS: true
+  useTLS: true,
+  appId: "1514841",
+    key: "4dd831b4f90804d6ebf4",
+    secret:"daf1a93f424b0666a500",
+    cluster: "ap2"
 });
 
 
