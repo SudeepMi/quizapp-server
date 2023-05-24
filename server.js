@@ -43,7 +43,7 @@ app.post('/addTeam',(req,res)=> {
         attempted:0,
         id:_id
     };
-
+    console.log(teams)
     teams.push(newTeam);
     pusher.trigger('main','team_added',{
         team:teams
@@ -72,6 +72,16 @@ app.post('/updateTeams',(req,res)=> {
     });
     res.status(200).send(teams)
 });
+
+app.post('/mode',(req,res)=> {
+    const mode = req.body.mode;
+    teams = mode;
+    pusher.trigger('main','mode',{
+        mode:mode
+    });
+    res.status(200).send(mode)
+});
+
 
 const pusher = new Pusher({
   useTLS: true,
