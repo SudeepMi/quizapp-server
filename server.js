@@ -72,10 +72,22 @@ app.post('/updateTeams',(req,res)=> {
     });
     res.status(200).send(teams)
 });
+app.post("/setTurn", (req, res) => {
+    pusher.trigger("main", "turn", {
+      turn: req.body.teamname,
+    });
+    res.status(200).send("TUrn set");
+  });
+
+app.post("/timer", (req, res) => {
+    pusher.trigger("main", "timer", {
+      timer: 1,
+    });
+    res.status(200).send("Turn set");
+  });
 
 app.post('/mode',(req,res)=> {
     const mode = req.body.mode;
-    teams = mode;
     pusher.trigger('main','mode',{
         mode:mode
     });
